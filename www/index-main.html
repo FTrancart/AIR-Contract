@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+<head>
+  <title>AIR Token</title>
+  <meta charset="UTF-8">
+  <!--    <meta property="og:url" content="https://">  -->
+  <meta property="og:type"               content="website">
+  <meta property="og:title"              content="BELEM Equity Token Services">
+  <meta property="og:description"        content="Manage your company shares and fund raise">
+  <!--    <meta property="og:image"              content="https://">-->
+  <meta property="og:image:width" content="60">
+  <meta property="og:image:height" content="50">
+  <meta name="description" content="BELEM Equity Token Services">
+  <meta name="viewport" content="width=799, initial-scale=.5">
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+  <link href="index.css" rel="stylesheet" type="text/css">
+  <link href="bootstrap.min.css" rel="stylesheet">
+  <script src="jquery.min.js"></script>
+  <script type="text/javascript" src="web3.min.js"> </script>
+  <script type="text/javascript" src="popper.min.js"></script>
+
+
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg" id="navmenu">
+    <a class="button2 nav-link nav-item" onclick="ui_click('home')"> HOME </a>
+    <a class="button2 nav-link nav-item" onclick="ui_click('simulation')"> AIR SIMULATION </a>
+
+    <div id="div-drop" class="dropdown">
+      <a role="button" class="nav-link nav-item button2 btn dropdown-toggle" id="companydropdown"
+      data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">COMPANIES</a>
+      <div id="div2" class="dropdown-menu" aria-labelledby="companydropdown">      
+        <div id="div-dropdown"></div>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item button2 nav-link nav-item" onclick="ui_click('register')">New</a>
+      </div>
+    </div>
+
+    <a class="nav-link nav-item button2 " href="#faq" style="color: black;">FAQ</a>
+    <a class="nav-link nav-item button2 " onclick="ui_click('contact')">CONTACT</a>
+
+    <div id="div-drop-dai" class="dropdown navbar-nav ml-auto" style="margin-right: 50px;">
+      <a role="button" class="nav-link nav-item button2 btn dropdown-toggle" id="dai-dropdown"
+      data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">DAI BALANCE</a>
+      <div class="dropdown-menu" aria-labelledby="dai-dropdown">      
+        <label class="dropdown-item auto-thousandsSep textcentre" id="label-dai"></label>
+        <button type="button" class="dropdown-item textcentre font-weight-bold" id="dai-button"  data-toggle="modal" data-target="#modalDAI">Get DAI</button>
+      </div>
+    </div>
+  </nav>
+  
+  
+  <div id="main">
+    <div class="background"> 
+      <div id="homecontent" class="section">
+        <center>
+
+          <h1 class="pagetitle marge70">
+            BELEM Equity Token Plaform
+          </h1>
+          <h1 class="pagetitle marge70">
+            Equity tokens for companies and investors
+          </h1>
+
+          <h4 class="text40_left">If you have not installed Metamask, have a look to our simulation tool to understand the benefits of the AIR contract ! <BR><BR>
+            <button class="btn btn-info" onclick="ui_click('simulation')">Test Simulation</button> </h4>
+      
+            <h4 class="text40_right">If you already have a Metamask account, you can register your own company on our platform here. <BR><BR>
+              <button class="btn btn-info" onclick="ui_click('register')">Register Company</button> </h4>
+            </center><br><br><br><br><br>
+            <div id="faq">
+              <h3 style="text-align: center;">ABOUT</h3><br><br>
+
+              <h4 class="textcentre" style="font-weight: bold;"> Qu'est ce qu'un BSA Air ? <br><br></h4>
+              <h4 style="text-align: left; width: 80%;margin: auto;"> Lancé en 2013 par SB Avocats & The Family, l’Accord d’Investissement Rapide (AIR) est un modèle d’investissement open-source pour startups souhaitant lever des fonds rapidement, sans faire d’augmentation de capital. Il est inspiré du modèle “Simple Agreement for Future Equity” (SAFE) , conçu par l’accélérateur américain Y Combinator en 2013.<br> 
+                Pour plus d'informations : Voir <a href="https://www.thefamily.co/air" style="color : blue;">thefamily</a> et notre simulateur ici <a onclick="ui_click('simulation')" style="color : blue;">Simulateur</a>.</h4><br><br><br>
+
+                <h4 class="textcentre" style="font-weight: bold;"> Pourquoi digitaliser le contrat AIR avec une blockchain ? <br><br></h4>
+                <h4 style="text-align: left; width: 80%;margin: auto;">Les propriétés de la blockchain permettent de créer des contrats AIR sans intermédiaire, et avec un gain de temps notable sur la création et les interactions du contrat. Aussi, tout contrat enregistré dans la blockchain est visible et auditable par n'importe quel acteur. La plateforme a alors pour rôle de procurer un support digital idéal à ce type d'accords et ainsi les rendre plus accessibles.</h4> <br><br><br>
+
+                <h4 class="textcentre" style="font-weight: bold;"> Que modélise le token AIR ? <br><br></h4>
+                <h4 style="text-align: left; width: 80%;margin: auto;">Le token représente directement le BSA. Jusqu'à maintenant, l'investisseur reçoit un document papier et c'est à l'entreprise de maintenir une tableau de capitalisation mentionnant les actionnaires et les porteurs de bons de souscription. Le AIR token est émis à réception des fonds, que nous modélisons par un Stable Coin (voir <a href="https://makerdao.com/en/dai">DAI</a>). Nous supposons que les actions de l'entreprise sont représentées par un token. Une fois la levée de fonds suivant effectuée, l'entreprise dipose d'une valorisation et les tokens AIR peuvent être convertis en tokens actions selon les règles définies par le contrat.</h4> <br><br><br>
+
+                <h4 class="textcentre" style="font-weight: bold;"> Comment ça marche ? <br><br></h4>
+                <h4 style="text-align: left; width: 80%;margin: auto;">Le Bon de Souscription d'Actions (BSA) est en réalité la majeure innovation du contrat car il permet à l'entreprise et à l’investisseur de négocier non pas une valorisation fixe mais un encadrement de cette dernière avec un seuil plafond, un seuil plancher ainsi qu’une décote (jusqu'à 30% en général) à appliquer au prochain tour de financement sur la valorisation finalement retenue. <br>Le BSA ainsi émis distribué par l’entreprise permet à l’investisseur, en cas de levée de fonds ultérieure, d’acquérir un nombre variable d’actions qui dépend des paramètres définis dans le contrat. Plus ce dernier prend des parts à un stade avancé de l'entreprise et plus la décôte de son BSA sera importante afin de récompenser le risque pris. <br>Les BSA présentent un avantage majeur pour les émetteurs : il constituent un titre de quasi-equity, mais ne représentent pas une action de l’entreprise, ni un titre de dette, comme c’est le cas pour les financements classiques.
+                </h4> <br><br><br>
+
+                <h4 class="textcentre" style="font-weight: bold;"> Comment voir des AIR contracts en cours d'éxécution ? (Sans Metamask)<br><br></h4>
+                <h4 style="text-align: left; width: 80%;margin: auto;">
+                </h4> <br><br><br>
+
+                <h4 class="textcentre" style="font-weight: bold;"> Comment lancer un AIR contract sur Ethereum ? (Metamask)<br><br></h4>
+                <h4 style="text-align: left; width: 80%;margin: auto;">Etape 1 : En premier lieu, vous devez déclarer la structure de votre entreprise, c'est-à-dire la liste des actionnaires et leur nombre de parts respectives. <br>Etape 2 : Initialiser les paramètres du AIR contract, soit un seuil plancher, un seuil plafond, une décôte sur la valorisation finale retenue, une limite de temps et d'investissement afin de prévenir la dilution de vos parts.<br>Une fois le contrat intialisé et enregistré dans la blockchain, tout investisseur peut prendre part au financement de votre entreprise grâce aux BSA.<br>Etape 3 : Une fois la période d'investissement par BSA passée et lorsque vous jugerez les financement assez importants, vous pouvez déclenchez une période d'investissement par fund raise pour d'autres investisseurs tardifs. Cependant, ces derniers ne béneficieront pas des mêmes conditions de rétributions de parts que les investisseurs BSA. Durant cette période, les porteurs de tokens AIR peuvent les convertir et ainsi se voir attribuer un nombre varibale de parts de la société, dépendant des paramètres de leur BSA. 
+                </h4> <br><br><br>
+              </div>
+
+              <div id="mobile" class="hidden">
+               <center>
+                Unfortunately, we require a desktop browser to interact with the contracts.<P>
+                  <input type="text" placeholder="your@email.com" id="useremail-mob" style="width:250px;"></input><P>
+                    <button id="mobile-btn" onclick="subscribeMobile()">Receive link</button>
+                  </div>
+
+                </center>
+              </div> 
+            </div> 
+          </div> 
+
+          <div id="simulationcontent" class="hidden section">
+
+            <center>
+              <div class="textzone"> <BR>
+               <h4>Please enter your AIR contract parameters and financing round valuation to simulate the effect of AIR on your company. 
+               </h4><BR>
+             </div>
+           </center>
+           <div class="large70">
+             <table id="layouttablesimul">
+              <td>
+                <table class="table" border id="simulation-air">
+                  <thead class="bg-dark">
+                    <th colspan=3 class="text-light textcentre" >AIR contract parameters</th>
+                  </thead>
+                  <tr>
+                    <td>
+                      <label>Initial shares</label>
+                    </td>
+                    <td><div class='input-group-prepend'>
+                      <span class='input-group-text'>#</span>
+                      <input id="simulShares" placeholder="Number of shares" class="auto-thousandsSep">
+                    </div>
+                  </td>
+                  <td>
+                    The total amount of shares in the initial list of shareholders.
+                  </td>
+                </tr>
+                <tr>
+                  <td><label>Pre-money cap</label>
+                  </td>
+                  <td>
+                    <div class='input-group-prepend'>
+                      <span class='input-group-text'>$</span>
+                      <input id="simulCap" placeholder="Cap valuation" class="auto-thousandsSep">
+                    </div>
+                  </td>
+                  <td> The pre money cap is the maximum valuation that might be applied for the conversion of the AIR tokens, this parameter protects the investor.
+                  </td>
+                </tr>
+                <tr>
+                  <td><label>Pre-money floor</label>
+                  </td>
+                  <td><div class='input-group-prepend'><span class='input-group-text'>$</span>
+                    <input id="simulFloor" placeholder="Floor valuation" class="auto-thousandsSep">
+                  </div>
+                </td>
+                <td>
+                  The pre money floor is the minimum valuation and is a security for the equity.
+                </td>
+              </tr>
+              <tr>
+                <td><label>Discount</label></td>
+                <td><div class='input-group-prepend'><span class='input-group-text'>%</span>
+                  <input id="simulDiscount" placeholder="Discount on valuation" class="auto-thousandsSep"></div>
+                </td>
+                <td>
+                  The discount is a percentage that is applied to the final pre-money valuation, it rewards the investor risk.
+                </td>
+              </tr>
+              <tr>
+                <td><label>Investment - BSA</label></td>
+                <td><div class='input-group-prepend'><span class='input-group-text'>$</span>
+                  <input id="simulBSA" placeholder="Enter the amount" class="auto-thousandsSep"></div>
+                </td>
+                <td>
+                  Enter the amount you would like to invest by BSA.
+                </td>
+              </tr>
+              <tr>
+                <td><label>Current valuation</label></td>
+                <td><div class='input-group-prepend'><span class='input-group-text'>$</span>
+                  <input id="simulValo" placeholder="Pre-money valuation" class="auto-thousandsSep"></div>
+                </td>
+                <td>
+                  The current valuation is the pre-money valuation at the opening of the fund raise, after the BSA investment period. This one is not discounted and does not have any cap or floor.
+                </td>
+              </tr>
+              <tr>
+                <td><label>Investment - Fund raise</label></td>
+                <td><div class='input-group-prepend'><span class='input-group-text'>$</span>
+                  <input id="simulFund" placeholder="Enter the amount" class="auto-thousandsSep"></div>
+                </td>
+                <td>
+                  Enter the amount you would like to invest by fund raise, and compare to the BSA investment to see by yourselves the AIR leverage.
+                </td>
+              </tr>
+            </table><center>
+              <button class='btn btn-primary active' onclick='simulAIR()'>SIMULATE AIR CONTRACT</button></center><BR>
+            </div>
+          </td>
+        </table>
+        <BR>
+        <table class="table" border id="result-simul">
+          <thead class="bg-dark">
+            <th> </th>
+            <th class="text-light">Shares</th>
+            <th class="text-light">Ownership</th></thead>
+            <tr><td><label>Existing shareholders</label>
+            </td>
+            <td><label class="text-success font-weight-bold" id="label-founder-shares"></label>
+            </td>
+            <td><label class="text-success font-weight-bold" id="label-founder-percent"></label>
+            </td></tr>
+            <tr><td><label>AIR Holders</label></td>
+              <td><label class="text-success font-weight-bold" id="label-bsa-shares"></label>
+              </td>
+              <td><label class="text-success font-weight-bold" id="label-bsa-percent"></label>
+              </td></tr>
+              <tr><td><label>Next Round Investors</label></td>
+                <td><label class="text-success font-weight-bold" id="label-fund-shares"></label>
+                </td>
+                <td><label class="text-success font-weight-bold" id="label-fund-percent"></label>
+                </td></tr>
+              </table>
+            </div>
+          </div>
+
+          <div id="registercontent" class="hidden section">
+            <div id="newcompanyinput" class="inputgroup">
+              <center><BR>
+                <div class="textzone">
+                  <h4>Register your company on the platform by filling in the name, registration number and the initial composition of the shareholders.</h4></div></center>
+                  <div class="marge70">
+                   <div class="form-row">
+
+                     <div class="form-group col-md-6">
+                      <label for="company-name">Company Name</label>
+                      <input class="form-control" id="company-name" placeholder="Corporate name">
+                    </div>
+
+                    <div id="div-companyID" class="form-group col-md-6">
+                      <label for="company-ID">Company Registration number</label>
+                      <input class="form-control" id="company-ID" placeholder="Registration number">
+                    </div>
+                  </div> 
+
+                  <div id="list-shareholders" class="inputgroup" >
+                    <table id="table-shareholders" class="table table-dark bords">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Account</th>
+                          <th scope="col">Share Count</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td id="td-address1"><input id="account1" class="form-control shareholder_account" placeholder="Shareholder address"></td>
+                          <td id ="td-count1"><input id="count1" class="form-control shareholder_sharecount auto-thousandsSep" placeholder="Number of shares"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <center>
+                      <button type="button" class="btn btn-secondary" onclick="ui_addshareholderclick()"> Add new shareholder </button>
+                    </center>
+                  </div><BR>
+                  <center>
+                    <button type="button" class="btn btn-primary active" onclick="registerCompany()"> REGISTER COMPANY </button><P>
+                    </center>
+                  </div>
+                </div>
+
+              </div>
+
+              <div id="companyviewcontent" class="hidden section" style="width: 95%; margin:auto;">
+                <div id="div-shareholders">
+                  <div id="root">
+                  </div><BR>
+                  <div id="table-resume">
+                    <table id="company-resume" class="table-light large50" border>
+                    </table>
+                  </div>
+
+                  <ul class="timeline">
+                    <li>
+                      <font size="4">
+                        <a href="#">Initial shareholders</a>
+                        <a href="#" class="float-right">5th March, 2014</a></font>
+                        <p>Here is the table displaying the initial shareholders composition of the company when registered.</p>
+
+                        <table class="table table-dark" id="initial-shareholders">
+                        </table></li>
+
+                        <li><font size="4">
+                          <a href="#">AIR Contract</a>
+                          <a href="#" class="float-right">21st March, 2014</a></font>
+                          <p>Please find here the table showing the status of your AIR contract and its parameters if initialized. </p>
+                          <div id="td-airtable">
+                            <table class="table" border id="aircontracts-table">
+                            </table>
+                          </div>
+                        </BR>
+                        <div> Here, you can buy a BSA and obtain AIR tokens with the ratio 1 DAI = 1 AIR token. These tokens might be converted later to the cap, floor or discounted pre-money valuation.
+                        </div>
+                        <center>
+
+                          <button type="button" class="btn btn-primary" id="bsa-button"  onclick="displayModal(1)">INVEST WITH BSA</button>
+                        </center><BR>
+
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content" id="modal-content-text">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Transaction summary</h5>
+                              </div>
+                              <div id="modal-body-text1" class="modal-body">
+                                <div class="form-row">
+                                  <div class="form-group col-md-6">
+
+                                    <input class="form-control auto-thousandsSep" placeholder="Amount of investment" id="bsa-input">
+                                  </div>
+                                  <div class="form-group col-md-6">
+                                    <button id="invest-bsa-button" class="btn btn-primary" onclick="displayConfirmation(1)">INVEST</button>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <table border class="table table-dark font-weight-bold" id="txTable1">
+                              </table>
+
+                              <table border class="table table-dark font-weight-bold" id="txFeedback1">
+                              </table>
+                              <div id="modal-body-confirm" class="modal-body">
+                              </div>
+                              <div class="modal-footer">
+                                <button id="validate-button" type="button" class="btn btn-success" onclick="investAir()" disabled>Confirm Transaction</button>
+
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="modal fade" id="modalDAI" tabindex="-1" role="dialog" aria-labelledby="modalDAILabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="modalDAILabel">DAI notification</h5>
+                              </div>
+
+                              <div class="modal-body" id="dai-msg">
+                                Do you want the contract to mint DAI tokens on your account ?
+                              </div>
+                              <div class="modal-body" id="txStatus">
+                                <table class="table table-dark" id="tableStatusTx">
+                                </table>
+                              </div>
+                              <div class="modal-footer" id="dai-footer">
+                                <button type="button" class="btn btn-success" onclick="getNewDai()">Get DAI</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+
+                        <table id='txAir'class="table table-dark">
+                          <thead>
+                            <tr>
+                              <th> Investor account </th>
+                              <th> Amount of investment </th>
+                              <th> # Block </th>
+                            </tr>
+                          </thead>
+                        </table>
+                      </li>
+
+                      <li><font size="4">
+                        <a href="#">Start fund raise</a>
+                        <a href="#" class="float-right">12th June, 2015</a></font>
+                        <p>At this stage, you can indicate the current valuation once the BSA investment period is closed or when you decide to start the fund raise. Therefore, the BSA holders can convert their AIR tokens into shares and the fund raisers can directly obtain company shares.</p>
+                        <table id="startFund" border class="table">
+                        </table><center><div id="button-startfund"></div></center>
+                        <BR>
+                        <div>You can now invest by fund raising and directly obtain shares computed with the current pre-money valuation indicated at the start of the fund raise.</div>
+                        <BR>
+                        <center>
+                          <button type="button" class="btn btn-primary" id="fund-button"  onclick="displayModal(2)">FUND RAISE</button>
+                        </center><BR>
+
+                        <table class="table table-dark" id="txFund">
+                          <thead>
+                            <tr>
+                              <th> Investor account </th>
+                              <th> Amount of investment </th>
+                              <th> # Block </th>
+                            </tr>
+                          </thead>
+                        </table></li>
+
+                        <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content" id="modal-content-text2">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel2">Transaction summary</h5>
+                              </div>
+                              <div id="modal2-body-text1" class="modal-body">
+                                <div class="form-row">
+                                  <div class="form-group col-md-6">
+                                    <input class="form-control auto-thousandsSep" placeholder="Amount of investment" id="fund-input">
+                                  </div>
+                                  <div class="form-group col-md-6">
+                                    <button id="invest-fund-button" class="btn btn-primary" onclick="displayConfirmation(2)">INVEST</button>
+                                  </div>
+                                </div>
+                              </div>
+                              <table class="table table-dark font-weight-bold" id="txTable2">
+                              </table>
+                              <table border class="table table-dark font-weight-bold" id="txFeedback2">
+                              </table>
+                              <div id="modal-body-confirm2" class="modal-body">
+                              </div>
+                              <div class="modal-footer">
+                                <button id="validate-button2" type="button" class="btn btn-success" onclick="fundRaise()">Confirm Transaction</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+
+                        <li><font size="4">
+                          <a href="#">AIR tokens conversion</a>
+                          <a href="#" class="float-right">12th June - 3rd October, 2015</a></font>
+                          <p>After the start of the fund raise, the BSA holders can now convert their AIR tokens with the valuation computed from the cap, floor, or discount parameter.</p>
+                        </p>
+
+                        <table id='convert-table' class="table" border>
+                          <th colspan=2 class="bg-dark text-light">
+                            Convert your AIR tokens
+                          </th> 
+                          <tr>
+                            <td id='request-shares'></td>
+                            <td><button class="btn btn-success active large" id="convert-button" onclick="setupConversion()" disabled>CONVERT AIR TOKENS</button>
+                            </td>
+                          </tr>
+                        </table>
+                      </li>
+
+                      <div class="modal fade" id="convertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content" id="modal-content-text">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">AIR tokens conversion</h5>
+                            </div>
+                            <div id="modal-body-convert" class="modal-body">
+                            </div>
+                            <table id="tableConversion" class="table table-dark"></table>
+                            <table id="txConvertFeedback" class="table table-dark"></table>
+                            <div id="modal-convert-confirm" class="modal-body">
+                            </div>
+                            <div class="modal-footer">
+                              <button id="validate-conversion" type="button" class="btn btn-success" onclick="convertAir()">Confirm Conversion</button>
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <li><font size="4">
+                        <a href="#">Shareholders composition updated</a>
+                        <a href="#" class="float-right">3rd October, 2015</a></font>
+                        <p>This table show the shareholders list with every new shareholder added (from BSA or/and fund raise) and their number of shares or tokens AIR.</p>
+                        <table class="table table-dark" border id="shareholders-table">
+                        </table>
+                      </li>
+
+                    </ul>
+                  </div>
+
+                </div>
+              </div>
+
+              <div id="faqcontent" class="hidden section">
+                <div class="faq" id="mainfaq">
+                  <div class="faqitem">
+                    <div class="ques" onclick="expandfaq(this)">
+                      What is an AIR Contract ?
+                    </div>
+                    <div class="ans hidden">
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="section hidden" id="contactcontent">
+                <div>
+                  <center>  
+                    <P>
+                      Want to tokenize your SAFE fund raising, reach out!<P>
+                        <a href="mailto:contact@belem.io">contact@belem.io</a><P>
+                        </center>
+                      </div>
+                    </div>
+
+                  </body>
+
+                  <script type="text/javascript" src="bootstrap.min.js"></script>
+                  <script src="index2.js"> </script>
+                  <script src="autoNumeric.min.js" type="text/javascript"></script>
+
+                  </html>
+

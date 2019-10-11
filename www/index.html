@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+<head>
+  <title>AIR Token</title>
+  <meta charset="UTF-8">
+  <meta property="og:type"               content="website">
+  <meta property="og:title"              content="BELEM Equity Token Services">
+  <meta property="og:description"        content="Manage your company shares and fund raise">
+  <meta property="og:image:width" content="60">
+  <meta property="og:image:height" content="50">
+  <meta name="description" content="BELEM Equity Token Services">
+  <meta name="viewport" content="width=799, initial-scale=.5">
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+  <link href="index.css" rel="stylesheet" type="text/css">
+  <link href="bootstrap.min.css" rel="stylesheet">
+  <script src="jquery.min.js"></script>
+  <script type="text/javascript" src="web3.min.js"> </script>
+  <script type="text/javascript" src="popper.min.js"></script>
+</head>
+
+<body style="margin: auto;"><br>
+  <div class="container mt-5 mb-5" style=" width: 85%;">
+    <h3> Choose the company whose AIR contract you would like to see.</h3><br>
+    <select class="form-control" id="select-companies">
+      <option value=0> Select your company</option>
+    </select><br><br>
+    <table id="hist-updated-shareholders" class="table table-bordered" style='text-align: center;' >
+    </table><br>
+    <div id="investment-levels" style="width : 70%;margin: auto;"> 
+    </div>
+    <div class="hidden" id="main">
+      <ul class="timeline">
+        <li>
+          <a href="#" style="font-size: 25px;"> Initial Shareholders</a>
+          <a href="#" style="float:right; font-size: 25px;"> 15 July 2019 </a>
+          <p style="font-size: 20px;"> Here, you can find the initial shareholders of the company by count shares.</p>
+          <table id="table-init-shareholders" class="table" border>
+          </table><br><br>
+        </li>
+        <li>
+          <a href="#" style="font-size: 25px;"> AIR contract parameters </a>
+          <a href="#" style="float:right; font-size: 25px;"> 16 July 2019 </a>
+          <p style="font-size: 20px;"> Find here the parameters of the AIR contract and its state, open if initialized, closed else.</p>
+          <table id="param-air" class="table" border>
+          </table><br><br>
+        </li>
+        <li>
+          <a href="#" style="font-size: 25px;">AIR contract transactions history</a>
+          <a href="#" style="float:right; font-size: 25px;"> 16 July 2019 </a>
+          <p style="font-size: 20px;"> We can see the history of the multiple investments by BSA, with details on investor address, amount and timestamp (block number).</p>
+          <table id="hist-tx-air" class="table" style='text-align: center;' border>
+          </table><br><br>
+        </li>
+        <li>
+          <a href="#" style="font-size: 25px;">Fund raise parameters</a>
+          <a href="#" style="float:right; font-size: 25px;"> 3rd October 2019 </a>
+          <p style="font-size: 20px;"> Here is the parameters of the fund raise, and its progress</p>
+          <table id="param-fundraise" class="table" border>
+          </table><br><br>
+        </li>
+        <li>
+          <a href="#" style="font-size: 25px;">Fund raise transactions history</a>
+          <a href="#" style="float:right; font-size: 25px;"> 4th October 2019 </a>
+          <p style="font-size: 20px;"> As for the BSA, find here the fund raise transactions history.</p>
+          <table id="hist-tx-fund" class="table" style='text-align: center;' border>
+          </table><br><br>
+        </li>
+        <li>
+          <a href="#" style="font-size: 25px;">AIR tokens conversion history</a>
+          <a href="#" style="float:right; font-size: 25px;"> 6th October 2019 </a>
+          <p style="font-size: 20px;">History of every investor conversion from AIR tokens to company shares.</p>
+          <table id="conversion-air" class="table" style='text-align: center;' border>
+          </table>
+        </li>
+      </ul>
+    </div>
+  </div>
+</body>
+
+<script type="text/javascript" src="bootstrap.min.js"></script>
+<script src="index3.js"> </script>
+<script src="autoNumeric.min.js" type="text/javascript"></script>
+</html>
+
